@@ -1,0 +1,50 @@
+ШПАРГАЛКА ПО GIT (для сброса и разделения на 4 папки)
+
+1. Удалить старый Git в корневой папке project (полный сброс)
+   cd /путь/к/project
+   rm -rf .git                (macOS/Linux)
+   rmdir /s .git              (Windows cmd)
+   rm -r -force .git          (Windows PowerShell)
+
+2. Удалить существующий remote origin (если ошибка "already exists")
+   git remote remove origin
+   или
+   git remote rm origin
+
+3. Проверить список remote
+   git remote -v
+
+4. Изменить URL remote без удаления (альтернатива)
+   git remote set-url origin https://новый-url.git
+
+5. Создать новый репозиторий в подпапке (повторить для папка1, папка2, папка3, папка4)
+   cd папка1
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git remote add origin https://github.com/ваш_логин/имя-репозитория.git
+   git push -u origin main   (или master)
+
+6. Проверить наличие больших файлов (ошибка 500)
+   find . -type f -size +50M        (macOS/Linux)
+   Get-ChildItem -Recurse | Where-Object { $_.Length -gt 50MB }   (Windows PowerShell)
+
+7. Исключить большие файлы через .gitignore
+   echo "*.zip" >> .gitignore
+   echo "*.exe" >> .gitignore
+   git add .gitignore
+   git commit -m "Add gitignore"
+
+8. Полезные команды
+   git status               - что изменилось?
+   git log --oneline        - история коммитов
+   git push                 - отправить изменения (если уже привязан upstream)
+   git push --force         - принудительно перезаписать удалённую ветку (осторожно!)
+
+9. Полный цикл для одной папки (копируйте и меняйте имя папки и URL)
+   cd папка1
+   git init
+   git add .
+   git commit -m "First commit"
+   git remote add origin https://github.com/ваш_логин/репо-папка1.git
+   git push -u origin master
