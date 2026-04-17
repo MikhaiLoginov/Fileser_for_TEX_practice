@@ -17,12 +17,10 @@
 4. Изменить URL remote без удаления (альтернатива)
    git remote set-url origin https://новый-url.git
 
-5. Создать новый репозиторий в подпапке (повторить для папка1, папка2, папка3, папка4)
+5. Создать комит 
    cd папка1
-   git init
    git add .
    git commit -m "Initial commit"
-   git remote add origin https://github.com/ваш_логин/имя-репозитория.git
    git push -u origin main   (или master)
 
 6. Проверить наличие больших файлов (ошибка 500)
@@ -43,7 +41,7 @@
 
 9. Полный цикл для одной папки (копируйте и меняйте имя папки и URL)
    cd папка1
-   git init
+   git init || Создание нового репозитория
    git add .
    git commit -m "First commit"
    git remote add origin https://github.com/ваш_логин/репо-папка1.git
